@@ -1,0 +1,14 @@
+# Serve index.php for directory requests
+DirectoryIndex index.php
+
+# Enable mod_rewrite
+RewriteEngine On
+
+# Allow access to static files (js, css, images) directly
+RewriteCond %{REQUEST_FILENAME} -f
+RewriteRule ^(.*)$ - [L]
+
+# Default rule: all other requests go to index.php
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^ index.php [L]

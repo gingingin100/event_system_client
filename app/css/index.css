@@ -1,0 +1,474 @@
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+table, th, td {
+    border: 1px solid black;
+}
+th, td {
+    padding: 10px;
+    text-align: left;
+}
+th {
+    background-color: #f2f2f2;
+}
+.hidden {
+    max-height: 0;
+    opacity: 0;
+    visibility: hidden;
+}
+.visible {
+    max-height: 1000px; 
+    opacity: 1;
+    visibility: visible;
+}
+.toggle-header {
+    cursor: pointer;
+    background-color: #007bff;
+    color: white;
+    padding: 10px 0;
+    margin-top: 20px;
+    border-radius: 5px;
+    text-align: center;
+    width: 100%;
+    transition: background-color 0.3s ease;
+}
+.toggle-header:hover {
+    background-color: #0056b3;
+}
+
+/* Modal styling */
+#deleteModal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 20px;
+    z-index: 1000;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    display: none; /* Hidden by default */
+}
+
+/* Add the visible class for showing the modal */
+.visible {
+    display: block !important; /* Ensure the modal is visible */
+}
+
+/* Overlay to dim the screen */
+#overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+    display: none; /* Hidden by default */
+}
+
+/* Modal buttons */
+#deleteModal button {
+    margin: 0 10px;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+#confirmDelete {
+    background-color: #f44336;
+    color: white;
+}
+
+#cancelDelete {
+    background-color: #4CAF50;
+    color: white;
+}
+/* Modal styling */
+#roleModal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 20px;
+    z-index: 1000;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    display: none; /* Hidden by default */
+}
+
+/* Buttons for role selection */
+#roleModal button {
+    margin: 5px;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.role-option {
+    background-color: #007bff;
+    color: white;
+}
+
+#cancelRoleChange {
+    background-color: #f44336;
+    color: white;
+}
+/* Modal styling for Add User */
+#addUserModal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 20px;
+    z-index: 1000;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    display: none; /* Hidden by default */
+}
+
+/* Make the modal visible when required */
+#addUserModal.visible {
+    display: block !important; /* Ensure the modal is visible */
+}
+
+/* Overlay to dim the screen */
+#overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+    display: none; /* Hidden by default */
+}
+
+/* Form styles */
+#addUserForm {
+    display: flex;
+    flex-direction: column; /* Stack form elements vertically */
+}
+
+#addUserForm div {
+    margin-bottom: 15px; /* Space between form fields */
+}
+
+#addUserForm label {
+    margin-bottom: 5px; /* Space between label and input */
+    font-weight: bold; /* Make label bold */
+}
+
+#addUserForm input[type="text"],
+#addUserForm input[type="email"] {
+    padding: 10px; /* Add padding to input fields */
+    border: 1px solid #ccc; /* Add border to input fields */
+    border-radius: 4px; /* Rounded corners */
+    font-size: 16px; /* Increase font size */
+}
+
+/* Modal buttons */
+#addUserModal button {
+    margin: 5px 0; /* Space between buttons */
+    padding: 10px 20px; /* Padding for buttons */
+    border: none;
+    cursor: pointer; /* Change cursor on hover */
+    border-radius: 4px; /* Rounded corners for buttons */
+}
+
+/* Create button styling */
+#createUserBtn {
+    background-color: #007bff; /* Blue background for create button */
+    color: white; /* White text */
+}
+
+#createUserBtn:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+}
+
+/* Cancel button styling */
+#cancelAddUser {
+    background-color: #f44336; /* Red background for cancel button */
+    color: white; /* White text */
+}
+
+#cancelAddUser:hover {
+    background-color: #e53935; /* Darker red on hover */
+}
+
+/* Adjust the modal for responsive design */
+@media (max-width: 600px) {
+    #addUserModal {
+        width: 90%; /* Use 90% of the viewport width on small screens */
+        height: auto; /* Auto height for content */
+    }
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex: 1; /* This ensures the main content pushes the footer down */
+    width: 100%;
+}
+
+
+/* Style for header and menu positioning */
+.header-container {
+    display: flex;
+    justify-content: space-between; /* This will push the menu button to the right */
+    align-items: center; /* Aligns the items vertically in the center */
+    padding: 20px;
+    background-color: #f1f1f1; /* Optional: background for header */
+}
+
+header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background-color: #f1f1f1; /* Same as your header-container for consistency */
+}
+h1 {
+    margin: 0;
+}
+
+.menu-btn {
+    cursor: pointer;
+    font-size: 30px;
+    padding: 10px;
+    border: none;
+    background: none;
+}
+
+/* Style the menu content */
+.menu-content {
+    display: none;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    background-color: #f9f9f9;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.1);
+    position: absolute;
+    z-index: 1;
+    right: 20px; /* Make sure the dropdown aligns with the button on the right */
+    top: 60px;   /* Adjust this based on the height of the header */
+    width: 200px;
+}
+
+/* Show the menu when the 'visible' class is added */
+.menu-content.visible {
+    display: block;
+}
+
+.menu-content li {
+    padding: 10px;
+}
+
+.menu-content li a {
+    text-decoration: none;
+    color: #333;
+    display: block;
+}
+
+.menu-content li:hover {
+    background-color: #ddd;
+}
+
+.landing-container {
+    background: rgba(255, 255, 255, 0.9);
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    color: #333;
+}
+
+.landing-container h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    color: #00509e;
+}
+
+.landing-container p {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.btn {
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 25px;
+    font-size: 1rem;
+    font-weight: bold;
+    transition: all 0.3s ease-in-out;
+}
+
+.btn-primary {
+    background: #007acc;
+    color: #fff;
+}
+
+.btn-primary:hover {
+    background: #00509e;
+}
+
+.btn-secondary {
+    background: #28a745;
+    color: #fff;
+}
+
+.btn-secondary:hover {
+    background: #1e7a34;
+}
+
+main {
+    width: 100%;
+    text-align: center;
+}
+
+.form-container {
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    max-width: 400px;
+    width: 90%;
+}
+
+h1 {
+    font-size: 2rem;
+    color: #00509e;
+    margin-bottom: 20px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+form input[type="text"], 
+form input[type="email"], 
+form input[type="password"], 
+form button {
+    width: 16.66%; /* Approximately 1/6th of the page width */
+    min-width: 200px; /* Ensures usability on very small screens */
+    max-width: 400px; /* Prevents overly wide inputs on larger screens */
+    margin: 0 auto; /* Centres the fields */
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+}
+
+
+.error-message {
+    color: #ff4d4d;
+    font-size: 0.9rem;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.redirect {
+    margin-top: 15px;
+    font-size: 0.9rem;
+}
+
+.redirect a {
+    color: #00509e;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.redirect a:hover {
+    text-decoration: underline;
+}
+
+
+footer {
+    background-color: #00509e; 
+    color: #fff;
+    text-align: center;
+    padding: 20px 10px;
+    margin-top: 20px;
+    box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.2);
+}
+
+footer .footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    font-size: 0.9rem;
+}
+
+footer a {
+    color: #ffdd00; 
+    text-decoration: none;
+    font-weight: bold;
+    margin: 0 5px;
+    transition: color 0.3s ease;
+}
+
+footer a:hover {
+    color: #ff9f00; 
+}
+
+@media (max-width: 768px) {
+    footer {
+        padding: 15px 5px;
+        font-size: 0.8rem;
+    }
+
+    footer .footer-content {
+        padding: 0 10px;
+    }
+}
+
+.dashboard-card {
+    display: block;
+    width: 300px;
+    padding: 30px;
+    text-align: center;
+    background-color: #007acc;
+    color: white;
+    text-decoration: none;
+    border-radius: 15px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s ease, background-color 0.3s ease;
+}
+
+.dashboard-card:hover {
+    background-color: #00509e;
+    transform: translateY(-5px);
+}
+
+.dashboard-card h2 {
+    margin-top: 0;
+    font-size: 1.8rem;
+}
+
+.dashboard-card p {
+    font-size: 1rem;
+    margin-top: 10px;
+}
