@@ -17,6 +17,6 @@ define('DB_PASSWORD', 'root');
 define('DB_HOST', 'db');
 define('DB_NAME', 'event_management');
 
-define('TEST_SERVER','localhost');
+define('TEST_SERVER','104.197.114.36');
 define('APP_ROOT_URL', 'http://' . $_SERVER['HTTP_HOST'].'/event_system_client');
 
