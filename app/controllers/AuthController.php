@@ -65,7 +65,7 @@ final class AuthController extends \Framework\Abstracts\Controller{
         $_SESSION['email'] = $data['email'];
         // echo $_SESSION['api_key'];
         echo $response;
-        // header('Location: /'.APP_ROOT_DIR);
+        header('Location: /'.APP_ROOT_DIR);
     }
 
     public function logout(){
