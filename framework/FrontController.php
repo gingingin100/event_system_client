@@ -19,6 +19,7 @@ final class FrontController{
         $this->loader->addNamespace('Framework\\Abstracts', ABSTRACT_DIR);
         $this->loader->addNamespace('Framework\\Routes', ROUTE_DIR);
         $this->loader->addNamespace('Framework\\Layout',LAYOUT_DIR);
+        $this->loader->addNamespace('Framework\\Interfaces', FRAMEWORK_DIR . '/interfaces');
     }
 
     public function run(){
