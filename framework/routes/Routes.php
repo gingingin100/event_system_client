@@ -65,8 +65,20 @@ final class Routes {
                 'httpMethods'=>[
                     'GET'=>'logout'
                 ]
+            ],
+            '/user_dash'=>[
+                'controller'=>'UserDashController',
+                'httpMethods'=>[
+                    'GET'=>'index'
+                ]
+                ],
+            '/event_dash'=>[
+                'controller'=>'EventDashController',
+                'httpMethods'=>[
+                    'GET'=>'index'
+                ]
             ]
-        ];
+    ];
     }
 }
 

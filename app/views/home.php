@@ -9,12 +9,12 @@
             </p>
 
             <div class="buttons">
-                <a href="/event_dash" class="dashboard-card event-card">
+                <a href="/<?php echo APP_ROOT_DIR; ?>/event_dash" class="dashboard-card event-card">
                     <h2>Event Dashboard</h2>
                     <p>Create, view, and manage your events efficiently.</p>
                 </a>
 
-                <a href="/user_dash" class="dashboard-card user-card">
+                <a href="/<?php echo APP_ROOT_DIR; ?>/user_dash" class="dashboard-card user-card">
                     <h2>User Dashboard</h2>
                     <p>Access user profiles and see registered events at a glance.</p>
                 </a>

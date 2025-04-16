@@ -2,8 +2,8 @@
 
 namespace App\Controllers;
 
-final class ShowcaseController{
+final class UserDashController{
     public function index(){
-        
+        echo 'user';
     }
 }
