@@ -12,7 +12,7 @@ class EventModel extends \Framework\Abstracts\Model {
         if ($method === 'GET' && !empty($data)) {
             // Append query parameters to URL
             $url .= '?' . http_build_query($data);
-        }
+        }   
 
         $headers = [
             'Content-Type: application/json',
@@ -25,7 +25,7 @@ class EventModel extends \Framework\Abstracts\Model {
         curl_setopt($ch, CURLOPT_CUSTOMREQUEST, strtoupper($method)); // GET, POST, PUT, DELETE
         curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
         
-        if (!empty($data)) {
+        if ($method !== 'GET' && !empty($data)) {
             curl_setopt($ch, CURLOPT_POSTFIELDS, $payload);
         }
 
